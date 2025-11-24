@@ -4,6 +4,7 @@ namespace App\Modules\Contacts\Models;
 
 use App\Models\User;
 use App\Models\Tenant;
+use App\Modules\Traits\HasTenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Contact extends Model
 {
-    use SoftDeletes;
+    use HasTenant, SoftDeletes;
 
     protected $fillable = [
         'tenant_id',

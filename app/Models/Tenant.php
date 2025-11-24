@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tenant extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -61,5 +62,12 @@ class Tenant extends Model
         return $this->modules()
             ->where('module_key', $moduleKey)
             ->update(['is_active' => false]);
+    }
+
+    public function addUsers(array $users): void
+    {
+        foreach ($users as $user) {
+            $user->tenant_id = $this->id;
+        }
     }
 }

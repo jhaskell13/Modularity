@@ -3,6 +3,9 @@
 namespace App\Modules\Contacts\Models;
 
 use App\Models\Tenant;
+use App\Modules\Contacts\Database\Factories\CompanyFactory;
+use App\Modules\Traits\HasTenant;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Company extends Model
 {
-    use SoftDeletes;
+    use HasFactory, HasTenant, SoftDeletes;
 
     protected $fillable = [
         'tenant_id',
@@ -37,13 +40,18 @@ class Company extends Model
         'employee_count' => 'integer',
     ];
 
-    protected static function booted(): void
+    // protected static function booted(): void
+    // {
+    //     static::creating(function ($company) {
+    //         if (Auth::check() && ! $company->tenant_id) {
+    //             $company->tenant_id = Auth::user()->tenant_id;
+    //         }
+    //     });
+    // }
+
+    protected static function newFactory()
     {
-        static::creating(function ($company) {
-            if (Auth::check() && ! $company->tenant_id) {
-                $company->tenant_id = Auth::user()->tenant_id;
-            }
-        });
+        return CompanyFactory::new();
     }
 
     public function tenant(): BelongsTo

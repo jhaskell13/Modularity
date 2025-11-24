@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tenant_modules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tenant_id')->constrained()->cascadeOnDelete();
-            $table->string('module_key'); // 'contacts', 'sales', etc.
+            $table->string('module_key'); // 'contacts', 'pipelines', etc.
             $table->boolean('is_active')->default(true);
             $table->json('configuration')->nullable();
             $table->timestamp('activated_at')->nullable();

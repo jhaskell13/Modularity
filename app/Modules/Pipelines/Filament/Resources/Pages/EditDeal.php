@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Modules\Pipelines\Filament\Resources\Pages;
+
+use App\Modules\Pipelines\Filament\Resources\DealResource;
+use Filament\Actions;
+use Filament\Actions\Action;
+use Filament\Resources\Pages\EditRecord;
+
+class EditDeal extends EditRecord
+{
+    protected static string $resource = DealResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\DeleteAction::make(),
+            Actions\ForceDeleteAction::make(),
+            Actions\RestoreAction::make(),
+        ];
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+}

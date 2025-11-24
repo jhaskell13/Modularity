@@ -2,12 +2,12 @@
 
 namespace App\Modules\Contacts\Filament\Resources;
 
+use App\Modules\Contacts\Models\Contact;
 use App\Modules\Contacts\Filament\Resources\Pages\CreateContact;
 use App\Modules\Contacts\Filament\Resources\Pages\EditContact;
 use App\Modules\Contacts\Filament\Resources\Pages\ListContacts;
 use App\Modules\Contacts\Filament\Resources\Schemas\ContactForm;
 use App\Modules\Contacts\Filament\Resources\Tables\ContactsTable;
-use App\Modules\Contacts\Models\Contact;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
