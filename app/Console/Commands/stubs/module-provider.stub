@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Modules\{{ moduleName }};
+
+use App\Modules\Contracts\ModuleServiceProvider;
+
+class {{ moduleName }}ServiceProvider extends ModuleServiceProvider
+{
+    protected string $moduleKey = '{{ moduleKey }}';
+
+    protected string $moduleName = '{{ moduleName }}';
+
+    public function register(): void
+    {
+        // Register services and dependencies...
+    }
+
+    public function boot(): void
+    {
+        parent::boot();
+    }
+}

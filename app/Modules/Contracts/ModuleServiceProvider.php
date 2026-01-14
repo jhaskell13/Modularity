@@ -9,8 +9,11 @@ use Illuminate\Support\ServiceProvider;
 abstract class ModuleServiceProvider extends ServiceProvider
 {
     protected string $moduleKey;
+
     protected string $moduleName;
+
     protected string $moduleNamespace;
+
     protected array $dependencies = [];
 
     public function register(): void

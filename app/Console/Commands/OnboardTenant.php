@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Tenant;
+use App\Models\User;
 use Illuminate\Console\Command;
 
 class OnboardTenant extends Command
@@ -12,7 +13,7 @@ class OnboardTenant extends Command
      *
      * @var string
      */
-    protected $signature = 'tenant:onboard {name} {users?*}';
+    protected $signature = 'tenant:onboard {name} {userIds?*}';
 
     /**
      * The console command description.
@@ -31,8 +32,8 @@ class OnboardTenant extends Command
             'subdomain' => str_replace(' ', '', strtolower($this->argument('name'))),
         ]);
 
-        if (! empty($users = $this->argument('users'))) {
-            $tenant->addUsers($users);
+        if (! empty($userIds = $this->argument('userIds'))) {
+            $tenant->addUsers(User::whereIn('id', $userIds)->get());
         }
 
         echo "Tenant successfully created!\n\n";

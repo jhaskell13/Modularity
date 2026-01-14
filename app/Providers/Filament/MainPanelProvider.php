@@ -22,23 +22,21 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class AdminPanelProvider extends PanelProvider
+class MainPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
             ->default()
-            ->id('admin')
-            ->path('admin')
+            ->id('main')
             ->login()
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->resources([
-                ContactResource::class,
-                PipelineResource::class,
-                DealResource::class,
-            ])
+            ->discoverResources(
+                in: app_path('Modules'),
+                for: 'App\\Modules'
+            )
             ->pages([
                 Dashboard::class,
             ])
