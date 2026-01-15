@@ -5,4 +5,6 @@ return [
     App\Modules\Pipelines\PipelinesServiceProvider::class,
     App\Providers\AppServiceProvider::class,
     App\Providers\Filament\MainPanelProvider::class,
+    App\Modules\Alerts\AlertsServiceProvider::class,
+
 ];
