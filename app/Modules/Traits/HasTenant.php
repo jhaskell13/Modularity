@@ -3,7 +3,9 @@
 namespace App\Modules\Traits;
 
 use App\Exceptions\MissingTenantId;
+use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
 
 trait HasTenant
@@ -19,5 +21,10 @@ trait HasTenant
                 $model->tenant_id = $tenantId;
             }
         });
+    }
+
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
     }
 }

@@ -34,7 +34,7 @@ class Tenant extends Model
 
     public function users(): HasMany
     {
-        return $this->hasMany(\App\Models\User::class);
+        return $this->hasMany(User::class);
     }
 
     public function hasModule(string $moduleKey): bool

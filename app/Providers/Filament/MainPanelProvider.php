@@ -2,9 +2,6 @@
 
 namespace App\Providers\Filament;
 
-use App\Modules\Contacts\Filament\Resources\ContactResource;
-use App\Modules\Pipelines\Filament\Resources\DealResource;
-use App\Modules\Pipelines\Filament\Resources\PipelineResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;

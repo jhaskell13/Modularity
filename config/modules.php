@@ -25,6 +25,15 @@ return [
             'dependencies' => ['contacts'],
             'version' => '1.0.0',
         ],
+        'alerts' => [
+            'name' => 'Alerts',
+            'description' => 'Alert and logging system',
+            'icon' => 'heroicon-o-alarm',
+            'provider' => \App\Modules\Alerts\AlertsServiceProvider::class,
+            'tier' => 'base',
+            'dependencies' => [],
+            'version' => '1.0.0',
+        ],
         // 'tasks' => [
         //     'name' => 'Tasks & Activities',
         //     'description' => 'Manage tasks and schedule activities',
@@ -95,6 +104,7 @@ return [
     'base_modules' => [
         'contacts',
         'pipelines',
+        'alerts',
         // 'tasks',
         // 'marketing',
         // 'products',

@@ -40,6 +40,7 @@ class MakeModule extends Command
         Artisan::call("make:filament-resource {$modelName}Resource --panel=main --model-namespace=App\\\\Modules\\\\{$moduleName}\\\\Models --no-interaction");
 
         // Move resources to Filament/Resources dir within the module
+        // TODO: REFACTOR NAMESPACES TO MATCH!!!
         $files->makeDirectory("{$modulePath}/Filament/Resources", 0755, true, true);
         $files->copyDirectory("{$modulePath}/Pages", "{$modulePath}/Filament/Resources/Pages");
         $files->deleteDirectory("{$modulePath}/Pages");
